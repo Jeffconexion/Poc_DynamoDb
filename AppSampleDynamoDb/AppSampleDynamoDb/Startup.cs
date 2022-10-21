@@ -1,4 +1,6 @@
 ﻿using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
+using AppSampleDynamoDb.DataBase;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -19,6 +21,7 @@ namespace AppSampleDynamoDb
 
     public void ConfigureServices(IServiceCollection services)
     {
+      // ~~~> Continuar em 58 minutos
       services.AddControllers();
 
       //Obter as credenciais da AWS
@@ -26,6 +29,10 @@ namespace AppSampleDynamoDb
 
       //Injetando o Dynamo
       services.AddAWSService<IAmazonDynamoDB>();
+
+      services.AddScoped<ClienteRepository>();
+
+      services.AddSingleton<IDynamoDBContext, DynamoDBContext>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
