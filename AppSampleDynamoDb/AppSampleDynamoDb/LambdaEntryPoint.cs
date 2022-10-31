@@ -3,13 +3,13 @@ using Microsoft.Extensions.Hosting;
 
 namespace AppSampleDynamoDb
 {
-  /// <summary>
-  /// This class extends from APIGatewayProxyFunction which contains the method FunctionHandlerAsync which is the 
-  /// actual Lambda function entry point. The Lambda handler field should be set to
-  /// 
-  /// AppSampleDynamoDb::AppSampleDynamoDb.LambdaEntryPoint::FunctionHandlerAsync
-  /// </summary>
-  public class LambdaEntryPoint :
+    /// <summary>
+    /// This class extends from APIGatewayProxyFunction which contains the method FunctionHandlerAsync which is the 
+    /// actual Lambda function entry point. The Lambda handler field should be set to
+    /// 
+    /// AppSampleDynamoDb::AppSampleDynamoDb.LambdaEntryPoint::FunctionHandlerAsync
+    /// </summary>
+    public class LambdaEntryPoint :
 
         // The base class must be set to match the AWS service invoking the Lambda function. If not Amazon.Lambda.AspNetCoreServer
         // will fail to convert the incoming request correctly into a valid ASP.NET Core request.
@@ -23,27 +23,27 @@ namespace AppSampleDynamoDb
         // will be the default and you must make Amazon.Lambda.AspNetCoreServer.APIGatewayHttpApiV2ProxyFunction the base class.
 
         Amazon.Lambda.AspNetCoreServer.APIGatewayProxyFunction
-  {
-    /// <summary>
-    /// The builder has configuration, logging and Amazon API Gateway already configured. The startup class
-    /// needs to be configured in this method using the UseStartup<>() method.
-    /// </summary>
-    /// <param name="builder"></param>
-    protected override void Init(IWebHostBuilder builder)
     {
-      builder
-          .UseStartup<Startup>();
-    }
+        /// <summary>
+        /// The builder has configuration, logging and Amazon API Gateway already configured. The startup class
+        /// needs to be configured in this method using the UseStartup<>() method.
+        /// </summary>
+        /// <param name="builder"></param>
+        protected override void Init(IWebHostBuilder builder)
+        {
+            builder
+                .UseStartup<Startup>();
+        }
 
-    /// <summary>
-    /// Use this override to customize the services registered with the IHostBuilder. 
-    /// 
-    /// It is recommended not to call ConfigureWebHostDefaults to configure the IWebHostBuilder inside this method.
-    /// Instead customize the IWebHostBuilder in the Init(IWebHostBuilder) overload.
-    /// </summary>
-    /// <param name="builder"></param>
-    protected override void Init(IHostBuilder builder)
-    {
+        /// <summary>
+        /// Use this override to customize the services registered with the IHostBuilder. 
+        /// 
+        /// It is recommended not to call ConfigureWebHostDefaults to configure the IWebHostBuilder inside this method.
+        /// Instead customize the IWebHostBuilder in the Init(IWebHostBuilder) overload.
+        /// </summary>
+        /// <param name="builder"></param>
+        protected override void Init(IHostBuilder builder)
+        {
+        }
     }
-  }
 }
